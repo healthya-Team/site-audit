@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site audits</title>
+<style>
+:root { --bg: #f7f7f5; --surface: #fff; --text: #1c1c1a; --muted: #66645e; --border: #e2e0db; --accent: #2f5bd3; }
+@media (prefers-color-scheme: dark) { :root { --bg: #141413; --surface: #1d1d1b; --text: #ecebe7; --muted: #a3a19a; --border: #34332f; --accent: #7b9cff; } }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 16px; }
+a { color: var(--accent); }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 12px; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+.del { background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); padding: 2px 8px; font: inherit; font-size: 12px; cursor: pointer; }
+.del:hover { color: #b3261e; border-color: #b3261e; }
+</style></head><body><main>
+<h1>Site audits</h1>
+<p style="color:var(--muted)">Run a new audit from the repo's Actions tab → "Site audit" → Run workflow. Newest 30 reports kept. Delete copies the report name and opens the "Delete report" workflow: paste it, then Run workflow (this page updates in about a minute).</p>
+<div class="panel"><table><thead><tr><th>Site</th><th>Run (UTC)</th><th class="n">Pages</th><th class="n">axe elements</th><th class="n">Broken links</th><th class="n">LH perf</th><th class="n">LH a11y</th><th></th></tr></thead><tbody>
+<tr><td><a href="reports/www.healthya.co.uk-2026-10-29-0749/report.html">www.healthya.co.uk</a></td><td>2026-10-29 07:49</td><td class="n">29</td><td class="n">61</td><td class="n">3</td><td class="n">78</td><td class="n">96</td><td><button type="button" class="del" data-name="www.healthya.co.uk-2026-10-29-0749">Delete</button></td></tr>
+<tr><td><a href="reports/demo-v2-pharmacy-dev.vercel.app-2026-10-23-0627/report.html">demo-v2-pharmacy-dev.vercel.app</a></td><td>2026-10-23 06:27</td><td class="n">31</td><td class="n">50</td><td class="n">2</td><td class="n">58</td><td class="n">97</td><td><button type="button" class="del" data-name="demo-v2-pharmacy-dev.vercel.app-2026-10-23-0627">Delete</button></td></tr>
+<tr><td><a href="reports/www.healthcheckpharmacy.com-2026-10-12-0902/report.html">www.healthcheckpharmacy.com</a></td><td>2026-10-12 09:02</td><td class="n">27</td><td class="n">509</td><td class="n">1</td><td class="n">62</td><td class="n">95</td><td><button type="button" class="del" data-name="www.healthcheckpharmacy.com-2026-10-12-0902">Delete</button></td></tr>
+<tr><td><a href="reports/onecare-pharmacy.vercel.app-2026-10-12-0607/report.html">onecare-pharmacy.vercel.app</a></td><td>2026-10-12 06:07</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">–</td><td class="n">–</td><td><button type="button" class="del" data-name="onecare-pharmacy.vercel.app-2026-10-12-0607">Delete</button></td></tr>
+<tr><td><a href="reports/onecare-pharmacy.vercel.app-2026-10-12-0605/report.html">onecare-pharmacy.vercel.app</a></td><td>2026-10-12 06:05</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">–</td><td class="n">–</td><td><button type="button" class="del" data-name="onecare-pharmacy.vercel.app-2026-10-12-0605">Delete</button></td></tr>
+<tr><td><a href="reports/www.centralpharmacy.clinic-2026-10-09-1150/report.html">www.centralpharmacy.clinic</a></td><td>2026-10-09 11:50</td><td class="n">51</td><td class="n">1068</td><td class="n">4</td><td class="n">94</td><td class="n">92</td><td><button type="button" class="del" data-name="www.centralpharmacy.clinic-2026-10-09-1150">Delete</button></td></tr>
+<tr><td><a href="reports/books.toscrape.com-2026-10-09-1148/report.html">books.toscrape.com</a></td><td>2026-10-09 11:48</td><td class="n">10</td><td class="n">2527</td><td class="n">0</td><td class="n">98</td><td class="n">85</td><td><button type="button" class="del" data-name="books.toscrape.com-2026-10-09-1148">Delete</button></td></tr>
+</tbody></table></div></main>
+<script>
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('.del');
+  if (!b) return;
+  try { await navigator.clipboard.writeText(b.dataset.name); b.textContent = 'Name copied ✓'; } catch { b.textContent = b.dataset.name; } // no clipboard: show it to copy by hand
+  window.open("https://github.com/healthya-Team/site-audit/actions/workflows/delete-report.yml", '_blank', 'noopener');
+});
+</script></body></html>
